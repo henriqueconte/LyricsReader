@@ -14,6 +14,8 @@
 		8051D2E4243BAD2B008C162F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */; };
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
 		E2BE40F31A23D76F82E351EA /* Pods_LyricsPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */; };
+		E779753F243CF71A00085F75 /* MusicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E779753E243CF71A00085F75 /* MusicSearch.swift */; };
+		E7797541243CF73200085F75 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7797540243CF73200085F75 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		8051D2E6243BAD2B008C162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		E779753E243CF71A00085F75 /* MusicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearch.swift; sourceTree = "<group>"; };
+		E7797540243CF73200085F75 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				E779753D243CF5E300085F75 /* Model */,
+				E779753C243CF5DB00085F75 /* Service */,
 				8051D2DA243BAD29008C162F /* AppDelegate.swift */,
 				8051D2DC243BAD29008C162F /* SceneDelegate.swift */,
 				8051D2DE243BAD29008C162F /* ContentView.swift */,
@@ -97,6 +103,22 @@
 				5A44ACD6461E3293A8666DF2 /* Pods-LyricsPlayer.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E779753C243CF5DB00085F75 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E7797540243CF73200085F75 /* WebService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E779753D243CF5E300085F75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E779753E243CF71A00085F75 /* MusicSearch.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +236,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7797541243CF73200085F75 /* WebService.swift in Sources */,
 				8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
 				8051D2DF243BAD29008C162F /* ContentView.swift in Sources */,
+				E779753F243CF71A00085F75 /* MusicSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
