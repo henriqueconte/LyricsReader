@@ -13,6 +13,7 @@
 		8051D2E1243BAD2B008C162F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E0243BAD2B008C162F /* Assets.xcassets */; };
 		8051D2E4243BAD2B008C162F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */; };
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
+		C01F4C36243D14E00064B848 /* MainHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */; };
 		E2BE40F31A23D76F82E351EA /* Pods_LyricsPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		8051D2E6243BAD2B008C162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHorizontalScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */,
 				8051D2E8243BAD2B008C162F /* Info.plist */,
 				8051D2E2243BAD2B008C162F /* Preview Content */,
+				C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */,
 			);
 			path = LyricsPlayer;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			files = (
 				8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
+				C01F4C36243D14E00064B848 /* MainHorizontalScrollView.swift in Sources */,
 				8051D2DF243BAD29008C162F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
