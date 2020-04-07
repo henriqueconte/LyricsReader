@@ -13,6 +13,8 @@
 		8051D2E1243BAD2B008C162F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E0243BAD2B008C162F /* Assets.xcassets */; };
 		8051D2E4243BAD2B008C162F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */; };
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
+		80BCCCDA243CF15B00DF6FB3 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BCCCD9243CF15B00DF6FB3 /* LyricsView.swift */; };
+		80BCCCDC243CF16B00DF6FB3 /* BigTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BCCCDB243CF16B00DF6FB3 /* BigTextView.swift */; };
 		E2BE40F31A23D76F82E351EA /* Pods_LyricsPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8051D2E6243BAD2B008C162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80BCCCD9243CF15B00DF6FB3 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
+		80BCCCDB243CF16B00DF6FB3 /* BigTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigTextView.swift; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +75,7 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				80BCCCD8243CF14A00DF6FB3 /* LyricsScreen */,
 				8051D2DA243BAD29008C162F /* AppDelegate.swift */,
 				8051D2DC243BAD29008C162F /* SceneDelegate.swift */,
 				8051D2DE243BAD29008C162F /* ContentView.swift */,
@@ -88,6 +93,15 @@
 				8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80BCCCD8243CF14A00DF6FB3 /* LyricsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80BCCCD9243CF15B00DF6FB3 /* LyricsView.swift */,
+				80BCCCDB243CF16B00DF6FB3 /* BigTextView.swift */,
+			);
+			path = LyricsScreen;
 			sourceTree = "<group>";
 		};
 		D29E7E219FD16F1B20E8AF05 /* Pods */ = {
@@ -214,6 +228,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BCCCDA243CF15B00DF6FB3 /* LyricsView.swift in Sources */,
+				80BCCCDC243CF16B00DF6FB3 /* BigTextView.swift in Sources */,
 				8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
 				8051D2DF243BAD29008C162F /* ContentView.swift in Sources */,
