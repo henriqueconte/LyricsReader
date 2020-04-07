@@ -9,14 +9,26 @@
 import SwiftUI
 
 struct LyricsView: View {
+    
+    var switchButtonsTopInset = -UIScreen.main.bounds.height / 11
+    
     var body: some View {
-        
-        VStack {
+        VStack() {
             BigTextView()
+            switchButtons
+                .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: UIScreen.main.bounds.width / 1.3))
         }
         .background(Color.blue)
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    var switchButtons: some View {
         
+        HStack {
+            Image("smallTextDisabledIcon")
+            Image("bigTextEnabledIcon")
+        }
+            
     }
     
 }
