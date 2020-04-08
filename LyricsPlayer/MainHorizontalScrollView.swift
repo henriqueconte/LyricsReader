@@ -16,20 +16,39 @@ struct MainHorizontalScrollView: View {
     
     var horizontalScrollCollectionCell: some View {
         ForEach(0..<songNames.count, id: \.self) { index in
-           ZStack {
-               self.coverImages[index]
-                   .resizable()
-                   .cornerRadius(5)
-                .frame(width: self.isFavoritesView ? 150 : 100, height: self.isFavoritesView ? 150 : 100)
-                   .aspectRatio(contentMode: .fit)
-                   .padding(4)
-               
-               Text(self.artistNames[index] + " - " + self.songNames[index])
-                   .font(.system(size: 12))
+                self.coverImages[index]
+                    .resizable()
+                    .cornerRadius(5)
+                    .brightness(-0.1)
+                    .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
+                    .aspectRatio(contentMode: .fit)
+                    
                 
-                   //.padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 50))
-               
-            }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.clear)
+                        .innerShadow(color: Color.black.opacity(0.8), radius: 1)
+                )
+                    
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
+                    )
+                
+                .overlay(Text(self.songNames[index])
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.white)
+                    .lineLimit(1)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                    .padding(8))
+                
+//                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
+//                .font(.system(size: 12))
+//                     .padding(4))
+                
+                    .padding(7.5)
+                
+            
         }
     }
     
@@ -43,10 +62,12 @@ struct MainHorizontalScrollView: View {
     
     var body: some View {
         VStack {
-            Text("Favorites")
-                .font(.system(size: 18))
+            Text(isFavoritesView ? "Favorites" : "Most Read")
+                .font(.system(size: 21))
                 .bold()
-                .foregroundColor(Color.black)
+                .foregroundColor(Color(red: 255/255, green: 55/255, blue: 95/255))
+            
+            //Spacer()
             
             horizontalScrollCollectionView
         }
@@ -55,6 +76,13 @@ struct MainHorizontalScrollView: View {
 
 struct MainHorizontalScrollView_Previews: PreviewProvider {
     static var previews: some View {
-        MainHorizontalScrollView(artistNames: ["Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean", "Frank Ocean"], songNames: ["Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond", "Blond"], coverImages: [Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond"), Image("blond")], isFavoritesView: true)
+        MainHorizontalScrollView(artistNames: ["Pink Floyd", "Frank Ocean"], songNames: ["The Dark Side Of The Moon", "Blond"], coverImages: [Image("darkSideOfTheMoon"), Image("blond")], isFavoritesView: true)
+        .previewDevice("iPad mini 4")
+            .previewLayout(
+                PreviewLayout.fixed(
+                    width: 2732.0,
+                    height: 2048.0
+            )
+        )
     }
 }
