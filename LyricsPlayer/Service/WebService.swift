@@ -37,8 +37,6 @@ final class WebService: ObservableObject {
             guard let error = error
             else {
                 let musicSearch = try? JSONDecoder().decode(MusicSearch.self, from: data!)
-                self.currentSearc = musicSearch
-                print(musicSearch?.response?.hits)
                 completion(musicSearch)
                 return
             }

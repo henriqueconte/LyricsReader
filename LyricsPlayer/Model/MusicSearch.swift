@@ -27,30 +27,34 @@ struct Response: Codable {
 }
 
 // MARK: - Hit
-struct Hit: Codable {
+struct Hit: Codable, Hashable {
     let index, type: String?
     let result: Result?
 }
 
+struct MusicHit: Codable, Hashable, Identifiable {
+    let id: UUID = UUID()
+    let details: Result?
+}
+
 // MARK: - Result
-struct Result: Codable {
-    let annotationCount: Int?
-    let apiPath, fullTitle: String?
-    let headerImageThumbnailURL, headerImageURL: String?
-    let id, lyricsOwnerID: Int?
-    let lyricsState: String?
+struct Result: Codable, Hashable, Identifiable {
+    let annotation_count: Int?
+    let api_path, full_title: String?
+    let header_image_thumbnail_url, header_image_url: String?
+    let id, lyrics_owner_id: Int?
+    let lyrics_state: String?
     let path: String?
-    let pyongsCount: Int?
-    let songArtImageThumbnailURL, songArtImageURL: String?
-    let stats: Stats?
-    let title, titleWithFeatured: String?
+    let pyongs_count: Int?
+    let song_art_image_thumbnail_url, song_art_image_url: String?
+    let title, title_with_featured: String?
     let url: String?
-    let primaryArtist: PrimaryArtist?
+    let primary_artist: PrimaryArtist?
 }
 
 
 // MARK: - PrimaryArtist
-struct PrimaryArtist: Codable {
+struct PrimaryArtist: Codable, Hashable, Identifiable {
     let apiPath: String?
     let headerImageURL: String?
     let id: Int?
@@ -59,12 +63,17 @@ struct PrimaryArtist: Codable {
     let name: String?
     let url: String?
     let iq: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case apiPath = "api_path"
+        case headerImageURL = "header_image_url"
+        case id
+        case imageURL = "image_url"
+        case isMemeVerified = "is_meme_verified"
+        case isVerified = "is_verified"
+        case name, url, iq
+    }
 }
 
-// MARK: - Stats
-struct Stats: Codable {
-    let unreviewedAnnotations, concurrents: Int?
-    let hot: Bool?
-    let pageviews: Int?
-}
+
 
