@@ -1,14 +1,14 @@
 //
-//  BigTextView.swift
+//  SmallTextView.swift
 //  LyricsPlayer
 //
-//  Created by Henrique Figueiredo Conte on 07/04/20.
+//  Created by Henrique Figueiredo Conte on 08/04/20.
 //  Copyright © 2020 Henrique Figueiredo Conte. All rights reserved.
 //
 
 import SwiftUI
 
-struct BigTextView: View {
+struct SmallTextView: View {
     
     var bottomPadding: CGFloat = UIScreen.main.bounds.height / 16
     
@@ -25,12 +25,12 @@ struct BigTextView: View {
         HStack {
             VStack {
                 Text("Rockin' in The Free World")
-                .font(.system(size: 60))
+                .font(.system(size: 35))
                 .bold()
                 .lineLimit(1)
                 
                 Text("Neil Young")
-                .font(.system(size: 30))
+                .font(.system(size: 21))
                 
             }
             .foregroundColor(.white)
@@ -48,15 +48,13 @@ struct BigTextView: View {
                 .foregroundColor(.white)
                 .padding(EdgeInsets(top: 20, leading: 100, bottom: 0, trailing: 100))
         })
-            .font(.system(size: 50))
+            .font(.system(size: 23))
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
     }
-  
 }
 
-struct BigTextView_Previews: PreviewProvider {
+struct SmallTextView_Previews: PreviewProvider {
     static var previews: some View {
-        BigTextView()
-            .padding()
+        SmallTextView()
     }
 }
