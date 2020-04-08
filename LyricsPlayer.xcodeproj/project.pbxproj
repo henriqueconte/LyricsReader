@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		800CC0FF243E24D300C53F58 /* SmallTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC0FE243E24D300C53F58 /* SmallTextView.swift */; };
 		800CC103243E374A00C53F58 /* ColorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC102243E374A00C53F58 /* ColorsConstants.swift */; };
+		800CC106243E666200C53F58 /* StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC105243E666200C53F58 /* StatusBarColor.swift */; };
 		8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DA243BAD29008C162F /* AppDelegate.swift */; };
 		8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DC243BAD29008C162F /* SceneDelegate.swift */; };
 		8051D2DF243BAD29008C162F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DE243BAD29008C162F /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 		7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LyricsPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800CC0FE243E24D300C53F58 /* SmallTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		800CC102243E374A00C53F58 /* ColorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsConstants.swift; sourceTree = "<group>"; };
+		800CC105243E666200C53F58 /* StatusBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarColor.swift; sourceTree = "<group>"; };
 		8051D2D7243BAD29008C162F /* LyricsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8051D2DA243BAD29008C162F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8051D2DC243BAD29008C162F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		800CC104243E65AB00C53F58 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				800CC102243E374A00C53F58 /* ColorsConstants.swift */,
+				800CC105243E666200C53F58 /* StatusBarColor.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		8051D2CE243BAD29008C162F = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +90,7 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				800CC104243E65AB00C53F58 /* Support */,
 				80BCCCD8243CF14A00DF6FB3 /* LyricsScreen */,
 				8051D2DA243BAD29008C162F /* AppDelegate.swift */,
 				8051D2DC243BAD29008C162F /* SceneDelegate.swift */,
@@ -87,7 +99,6 @@
 				8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */,
 				8051D2E8243BAD2B008C162F /* Info.plist */,
 				8051D2E2243BAD2B008C162F /* Preview Content */,
-				800CC102243E374A00C53F58 /* ColorsConstants.swift */,
 			);
 			path = LyricsPlayer;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 				8051D2DF243BAD29008C162F /* ContentView.swift in Sources */,
 				800CC0FF243E24D300C53F58 /* SmallTextView.swift in Sources */,
 				800CC103243E374A00C53F58 /* ColorsConstants.swift in Sources */,
+				800CC106243E666200C53F58 /* StatusBarColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

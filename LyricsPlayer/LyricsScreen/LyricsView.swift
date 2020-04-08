@@ -13,7 +13,7 @@ struct LyricsView: View {
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
     var switchButtonsTrailingInset = UIScreen.main.bounds.width * 1.1
     
-    var gradientViewTopInset = -UIScreen.main.bounds.height * 0.145
+    var gradientViewTopInset = -UIScreen.main.bounds.height * 0.15
     
     
     var body: some View {
