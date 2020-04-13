@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                self.webservice.fetchSearchMusicData(musicName: "Love Yourself") { (result) -> (Void) in
+                self.webservice.fetchSearchMusicData(musicName: self.searchText) { (result) -> (Void) in
                     for musicHit in result?.response?.hits ?? [] {
                         self.musicList.append(MusicHit(details: musicHit.result))
                     }
