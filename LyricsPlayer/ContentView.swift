@@ -8,9 +8,18 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            SearchBarView()
+            .environmentObject(WebService())
+            
+            MainHorizontalScrollView(isFavoritesView: true)
+                .environmentObject(MostReadData())
+            MainHorizontalScrollView(isFavoritesView: false)
+                .environmentObject(MostReadData())
+        }
     }
 }
 
