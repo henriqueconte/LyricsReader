@@ -37,6 +37,14 @@ struct BigTextView: View {
             }
             .foregroundColor(.white)
             .padding(EdgeInsets(top: 60, leading: 50, bottom: 0, trailing: 50))
+        
+            
+            // MARK:- Favoritar aqui Felipe!!!
+            Button(action: {
+                
+            }) {
+                Image("heartIcon")
+            }
         }
         
     }
