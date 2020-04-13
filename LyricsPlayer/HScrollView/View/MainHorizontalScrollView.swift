@@ -47,38 +47,41 @@ struct MainHorizontalScrollView: View {
     
     var horizontalScrollCollectionCell: some View {
         ForEach(self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
-            trackAndAlbum.album?
-                .resizable()
-                .cornerRadius(5)
-                .brightness(-0.1)
-                .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
-                .aspectRatio(contentMode: .fit)
-                    
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.clear)
-                        .innerShadow(color: Color.black.opacity(0.8), radius: 1)
-                )
-                    
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
-                )
-                
-                .overlay(Text(trackAndAlbum.track?.trackName ?? "")
-                    .font(.system(size: 12))
-                    .foregroundColor(Color.white)
-                    .lineLimit(1)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                    .padding(8)
-                )
-                
-//                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
-//                .font(.system(size: 12))
-//                     .padding(4))
-                
-                    .padding(7.5)
-                
+            NavigationLink(destination: LyricsView()) {
+                trackAndAlbum.album?
+                                .resizable()
+                                .cornerRadius(5)
+                                .brightness(-0.1)
+                                .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
+                                .aspectRatio(contentMode: .fit)
+                                
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.clear)
+                                        .innerShadow(color: Color.black.opacity(0.8), radius: 1)
+                                )
+                                    
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
+                                )
+                                
+                                .overlay(Text(trackAndAlbum.track?.trackName ?? "")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(Color.white)
+                                    .lineLimit(1)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                                    .padding(8)
+                                )
+                                
+                            
+                                
+                //                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
+                //                .font(.system(size: 12))
+                //                     .padding(4))
+                                
+                                    .padding(7.5)
+            }
             
         }
     }
