@@ -10,7 +10,16 @@ import SwiftUI
 
 struct PlayerBarView: View {
     var body: some View {
-        artistView
+        
+        HStack {
+            artistView
+            
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width * 0.1)
+            
+            songControls
+        }
+        
     }
     
     
@@ -41,11 +50,23 @@ struct PlayerBarView: View {
     }
     
     var songControls: some View {
-        HStack {
+        HStack(spacing: 34) {
             Button(action: {
                 
             }) {
-                Image("")
+                Image("backSongIcon")
+            }
+            
+            Button(action: {
+                
+            }) {
+                Image("pauseSongIcon")
+            }
+            
+            Button(action: {
+                
+            }) {
+                Image("skipSongIcon")
             }
         }
     }
