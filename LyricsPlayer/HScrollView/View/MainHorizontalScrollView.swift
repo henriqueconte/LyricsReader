@@ -16,6 +16,35 @@ struct MainHorizontalScrollView: View {
     var isFavoritesView: Bool
     @State var mostReadTracksFetched: Bool = false
     
+    func fetchAlbumImagesRequest(index: Int, trackInfo: TrackList, group: DispatchGroup) {
+        group.enter()
+        self.mostReadTracksData.fetchAlbumImages(artist: trackInfo.track?.artistName ?? "", album: trackInfo.track?.albumName ?? "", completion: { (result) -> (Void) in
+        
+            var albumImage: Image = Image("noAlbumImage")
+        
+            switch(result) {
+            case "JSON Error":
+                print("JSON Error")
+            case self.mostReadTracksData.tempImageString:
+                if(self.mostReadTracksData.tempImageString != "") {
+                    let imageURL = URL(string: self.mostReadTracksData.tempImageString)!
+                    let imageData = try? Data(contentsOf: imageURL)
+                    let albumUIImage = UIImage(data: imageData ?? Data())
+                    albumImage = Image(uiImage: albumUIImage ?? UIImage())
+                }
+            case "noAlbumImage":
+                break
+            default:
+                print("error")
+            }
+            
+            DispatchQueue.main.async {
+                self.mostReadTracksData.tracksAndAlbums[index] = TrackAndAlbum(track: trackInfo.track, album: albumImage)
+                group.leave()
+            }
+        })
+    }
+    
     var horizontalScrollCollectionCell: some View {
         ForEach(self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
             trackAndAlbum.album?
@@ -69,10 +98,12 @@ struct MainHorizontalScrollView: View {
                 .bold()
                 .foregroundColor(Color(red: 255/255, green: 55/255, blue: 95/255))
             
-            //Spacer()
-            //if(mostReadTracksFetched) {
+            if(self.mostReadTracksFetched) {
                 horizontalScrollCollectionView
-            //}
+            } else {
+                horizontalScrollCollectionView.hidden()
+            }
+                
         }
         .onAppear() {
             if(!self.isFavoritesView) {
@@ -81,50 +112,65 @@ struct MainHorizontalScrollView: View {
                     case .failure(let error):
                         print("Error")
                         print(error.localizedDescription)
-                    case .success(true):
-                        print("Tracks obtained")
+                    case .success(let trackList):
                         
-//                        DispatchQueue.main.async {
-//                            self.mostReadTracksData.albumImages.removeAll()
-//                        }
-//
-//                        let semaphore = DispatchSemaphore(value: 1)
-//
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//
-//                        for track in self.mostReadTracksData.mostReadTracks {
-//                            semaphore.wait()
-//                            self.mostReadTracksData.fetchAlbumImages(artist: track.artistName ?? "", album: track.albumName ?? "", completion: { (result) -> (Void) in
-//                                    switch(result) {
-//                                    case "JSON Error":
-//                                        print("JSON Error")
-//                                        //print(error.localizedDescription)
-//                                    case self.mostReadTracksData.tempImageString:
-//                                        //print("Album images obtained")
-//                                        let imageURL = URL(string: self.mostReadTracksData.tempImageString)!
-//                                        let imageData = try? Data(contentsOf: imageURL)
-//                                        let albumUIImage = UIImage(data: imageData ?? Data())
-//                                        let albumImage = Image(uiImage: albumUIImage ?? UIImage())
-//                                        DispatchQueue.main.async {
-//                                            self.mostReadTracksData.albumImages.append(albumImage)
-//                                        }
-//
-//                                    case "noAlbumImage":
-//                                        //print("No album images found in API")
-//                                        let noAlbumImage = Image("noAlbumImage")
-//                                        DispatchQueue.main.async {
-//                                            self.mostReadTracksData.albumImages.append(noAlbumImage)
-//                                        }
-//                                    default:
-//                                        print("error")
-//                                    }
-//                                    semaphore.signal()
-//                                })
-//                            }
-//                        }
-//
-                    case .success(false):
-                        print("No tracks found in API")
+                        self.mostReadTracksFetched = true
+                        
+                        if(trackList.isEmpty) {
+                            print("No tracks found in API")
+                        } else {
+                            print("Tracks obtained")
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.mostReadTracksData.tracksAndAlbums.removeAll()
+                            for trackInfo in trackList {
+                                if let track = trackInfo.track {
+                                    self.mostReadTracksData.tracksAndAlbums.append(TrackAndAlbum(track: track, album: Image("noAlbumImage")))
+                                }
+                            }
+                        }
+                        
+                        let configuration = URLSessionConfiguration.default
+                        configuration.httpMaximumConnectionsPerHost = 10
+                        
+                        let group1 = DispatchGroup()
+                        let group2 = DispatchGroup()
+                        let group3 = DispatchGroup()
+                        let group4 = DispatchGroup()
+                        let group5 = DispatchGroup()
+                        
+                        for (index, trackInfo) in trackList[0..<2].enumerated() {
+                            self.fetchAlbumImagesRequest(index: index, trackInfo: trackInfo, group: group1)
+                        }
+                        for (index, trackInfo) in trackList[2..<4].enumerated() {
+                            self.fetchAlbumImagesRequest(index: index+2, trackInfo: trackInfo, group: group2)
+                        }
+                        for (index, trackInfo) in trackList[4..<6].enumerated() {
+                            self.fetchAlbumImagesRequest(index: index+4, trackInfo: trackInfo, group: group3)
+                        }
+                        for (index, trackInfo) in trackList[6..<8].enumerated() {
+                            self.fetchAlbumImagesRequest(index: index+6, trackInfo: trackInfo, group: group4)
+                        }
+                        for (index, trackInfo) in trackList[8..<10].enumerated() {
+                            self.fetchAlbumImagesRequest(index: index+8, trackInfo: trackInfo, group: group5)
+                        }
+                        
+                        group1.notify(queue: .main) {
+                            print("Images 1-2 obtained")
+                        }
+                        group2.notify(queue: .main) {
+                            print("Images 3-4 obtained")
+                        }
+                        group3.notify(queue: .main) {
+                            print("Images 5-6 obtained")
+                        }
+                        group4.notify(queue: .main) {
+                            print("Images 7-8 obtained")
+                        }
+                        group5.notify(queue: .main) {
+                            print("Images 9-10 obtained")
+                        }
                     }
                 })
             }
