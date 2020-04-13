@@ -14,7 +14,7 @@ struct LyricsView: View {
     @State private var isBigTextActive: Bool = true
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
-    var switchButtonsTrailingInset = UIScreen.main.bounds.width * 1.1
+    var switchButtonsTrailingInset = UIScreen.main.bounds.width * 0.8
     
     var gradientViewTopInset = -UIScreen.main.bounds.height * 0.15
     
@@ -33,7 +33,7 @@ struct LyricsView: View {
                 .padding(EdgeInsets(top: gradientViewTopInset, leading: 0, bottom: 0, trailing:0))
             
             switchButtons
-                .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
+            .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
             
         }
         .background(Color(ColorsConstants.darkGray))
@@ -43,17 +43,6 @@ struct LyricsView: View {
     var switchButtons: some View {
         
         HStack {
-            Button(action: {
-                self.isBigTextActive = false
-            }) {
-                if isBigTextActive {
-                    Image("smallTextDisabledIcon")
-                }
-                else {
-                    Image("smallTextEnabledIcon")
-                }
-                
-            }
             
             Button(action: {
                 self.isBigTextActive = true
@@ -67,6 +56,17 @@ struct LyricsView: View {
                 }
             }
             
+            Button(action: {
+                self.isBigTextActive = false
+            }) {
+                if isBigTextActive {
+                    Image("smallTextDisabledIcon")
+                }
+                else {
+                    Image("smallTextEnabledIcon")
+                }
+                
+            }
         }
     }
     
