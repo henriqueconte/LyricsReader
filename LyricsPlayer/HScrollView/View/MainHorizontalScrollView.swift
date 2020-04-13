@@ -10,11 +10,10 @@ import SwiftUI
 
 struct MainHorizontalScrollView: View {
     @EnvironmentObject var mostReadTracksData: MostReadData
-    //var artistNames: [String]
-    //var songNames: [String]
-    //var albumImages: [Image] = [Image("blond")]
+    @EnvironmentObject var favoritesData: FavoritesData
     var isFavoritesView: Bool
     @State var mostReadTracksFetched: Bool = false
+    @State var albumImagesFetched: Bool = false
     
     func fetchAlbumImagesRequest(index: Int, trackInfo: TrackList, group: DispatchGroup) {
         group.enter()
@@ -46,43 +45,41 @@ struct MainHorizontalScrollView: View {
     }
     
     var horizontalScrollCollectionCell: some View {
-        ForEach(self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
-            NavigationLink(destination: LyricsView()) {
+        ForEach(isFavoritesView ? self.favoritesData.favoriteTracks : self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
+            NavigationLink(destination: LyricsView(artistName: trackAndAlbum.track?.artistName ?? "", trackName: trackAndAlbum.track?.trackName ?? "")) {
                 trackAndAlbum.album?
-                                .resizable()
-                                .cornerRadius(5)
-                                .brightness(-0.1)
-                                .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
-                                .aspectRatio(contentMode: .fit)
-                                
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.clear)
-                                        .innerShadow(color: Color.black.opacity(0.8), radius: 1)
-                                )
-                                    
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
-                                )
-                                
-                                .overlay(Text(trackAndAlbum.track?.trackName ?? "")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(Color.white)
-                                    .lineLimit(1)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                                    .padding(8)
-                                )
-                                
-                            
-                                
-                //                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
-                //                .font(.system(size: 12))
-                //                     .padding(4))
-                                
-                                    .padding(7.5)
+                    .resizable()
+                    .cornerRadius(5)
+                    .brightness(-0.1)
+                    .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
+                    .aspectRatio(contentMode: .fit)
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.clear)
+                            .innerShadow(color: Color.black.opacity(0.8), radius: 1)
+                    )
+                        
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
+                    )
+                    
+                    .overlay(Text(trackAndAlbum.track?.trackName ?? "")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color.white)
+                        .lineLimit(1)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                        .padding(8)
+                    )
+                     
+    //                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
+    //                .font(.system(size: 12))
+    //                     .padding(4))
+                    
+                    .padding(7.5)
             }
-        .buttonStyle(PlainButtonStyle())
+            .buttonStyle(PlainButtonStyle())
         }
     }
     
@@ -101,7 +98,7 @@ struct MainHorizontalScrollView: View {
                 .bold()
                 .foregroundColor(Color(red: 255/255, green: 55/255, blue: 95/255))
             
-            if(self.mostReadTracksFetched) {
+            if(self.mostReadTracksFetched || self.isFavoritesView) {
                 horizontalScrollCollectionView
             } else {
                 horizontalScrollCollectionView.hidden()
@@ -109,7 +106,7 @@ struct MainHorizontalScrollView: View {
                 
         }
         .onAppear() {
-            if(!self.isFavoritesView) {
+            if(!self.isFavoritesView && !self.mostReadTracksFetched && !self.albumImagesFetched) {
                 self.mostReadTracksData.fetchMostReadLyrics(completion: { (result) -> (Void) in
                     switch(result) {
                     case .failure(let error):
@@ -138,42 +135,28 @@ struct MainHorizontalScrollView: View {
                         configuration.httpMaximumConnectionsPerHost = 10
                         
                         let group1 = DispatchGroup()
-                        let group2 = DispatchGroup()
-                        let group3 = DispatchGroup()
-                        let group4 = DispatchGroup()
-                        let group5 = DispatchGroup()
                         
                         for (index, trackInfo) in trackList[0..<2].enumerated() {
                             self.fetchAlbumImagesRequest(index: index, trackInfo: trackInfo, group: group1)
                         }
                         for (index, trackInfo) in trackList[2..<4].enumerated() {
-                            self.fetchAlbumImagesRequest(index: index+2, trackInfo: trackInfo, group: group2)
+                            self.fetchAlbumImagesRequest(index: index+2, trackInfo: trackInfo, group: group1)
                         }
                         for (index, trackInfo) in trackList[4..<6].enumerated() {
-                            self.fetchAlbumImagesRequest(index: index+4, trackInfo: trackInfo, group: group3)
+                            self.fetchAlbumImagesRequest(index: index+4, trackInfo: trackInfo, group: group1)
                         }
                         for (index, trackInfo) in trackList[6..<8].enumerated() {
-                            self.fetchAlbumImagesRequest(index: index+6, trackInfo: trackInfo, group: group4)
+                            self.fetchAlbumImagesRequest(index: index+6, trackInfo: trackInfo, group: group1)
                         }
                         for (index, trackInfo) in trackList[8..<10].enumerated() {
-                            self.fetchAlbumImagesRequest(index: index+8, trackInfo: trackInfo, group: group5)
+                            self.fetchAlbumImagesRequest(index: index+8, trackInfo: trackInfo, group: group1)
                         }
                         
                         group1.notify(queue: .main) {
-                            print("Images 1-2 obtained")
+                            print("Images obtained")
+                            self.albumImagesFetched = true
                         }
-                        group2.notify(queue: .main) {
-                            print("Images 3-4 obtained")
-                        }
-                        group3.notify(queue: .main) {
-                            print("Images 5-6 obtained")
-                        }
-                        group4.notify(queue: .main) {
-                            print("Images 7-8 obtained")
-                        }
-                        group5.notify(queue: .main) {
-                            print("Images 9-10 obtained")
-                        }
+                        
                     }
                 })
             }
@@ -185,6 +168,7 @@ struct MainHorizontalScrollView_Previews: PreviewProvider {
     static var previews: some View {
         MainHorizontalScrollView(isFavoritesView: false)
         .environmentObject(MostReadData())
+        .environmentObject(FavoritesData())
         .previewDevice("iPad mini 4")
             .previewLayout(
                 PreviewLayout.fixed(

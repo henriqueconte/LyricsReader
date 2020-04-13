@@ -18,8 +18,10 @@ struct ContentView: View {
                 
                 MainHorizontalScrollView(isFavoritesView: true)
                     .environmentObject(MostReadData())
+                    .environmentObject(FavoritesData())
                 MainHorizontalScrollView(isFavoritesView: false)
                     .environmentObject(MostReadData())
+                    .environmentObject(FavoritesData())
             }
         }
             .navigationViewStyle(StackNavigationViewStyle())

@@ -7,21 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
-
-//MARK: - TrackAndAlbum
-struct TrackAndAlbum: Hashable {
-    static func == (lhs: TrackAndAlbum, rhs: TrackAndAlbum) -> Bool {
-        return lhs.track?.trackID == rhs.track?.trackID
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(track?.trackID)
-    }
-    
-    let track: Track?
-    let album: Image?
-}
 
 // MARK: - MostReadLyrics
 //struct MostReadLyrics: Codable {
