@@ -15,7 +15,6 @@ struct LyricsScrollViews<Content>: View where Content: View {
     var body: some View {
 
         GeometryReader { outerGeometry in
-//            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             self.content()
             .frame(height: outerGeometry.size.height)
             .clipped()
@@ -40,8 +39,6 @@ struct LyricsScrollView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIScrollView, context: Context) {
-        //uiView.text = text
-        //uiView.showsHorizontalScrollIndicator = true
         uiView.indicatorStyle = .white
     }
 }
