@@ -10,6 +10,7 @@
 		800CC0FF243E24D300C53F58 /* SmallTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC0FE243E24D300C53F58 /* SmallTextView.swift */; };
 		800CC103243E374A00C53F58 /* ColorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC102243E374A00C53F58 /* ColorsConstants.swift */; };
 		800CC106243E666200C53F58 /* StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC105243E666200C53F58 /* StatusBarColor.swift */; };
+		800CC108243E6A7600C53F58 /* LyricsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800CC107243E6A7600C53F58 /* LyricsScrollView.swift */; };
 		8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DA243BAD29008C162F /* AppDelegate.swift */; };
 		8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DC243BAD29008C162F /* SceneDelegate.swift */; };
 		8051D2DF243BAD29008C162F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DE243BAD29008C162F /* ContentView.swift */; };
@@ -27,6 +28,7 @@
 		800CC0FE243E24D300C53F58 /* SmallTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		800CC102243E374A00C53F58 /* ColorsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsConstants.swift; sourceTree = "<group>"; };
 		800CC105243E666200C53F58 /* StatusBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarColor.swift; sourceTree = "<group>"; };
+		800CC107243E6A7600C53F58 /* LyricsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsScrollView.swift; sourceTree = "<group>"; };
 		8051D2D7243BAD29008C162F /* LyricsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8051D2DA243BAD29008C162F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8051D2DC243BAD29008C162F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				80BCCCD9243CF15B00DF6FB3 /* LyricsView.swift */,
 				80BCCCDB243CF16B00DF6FB3 /* BigTextView.swift */,
 				800CC0FE243E24D300C53F58 /* SmallTextView.swift */,
+				800CC107243E6A7600C53F58 /* LyricsScrollView.swift */,
 			);
 			path = LyricsScreen;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				800CC0FF243E24D300C53F58 /* SmallTextView.swift in Sources */,
 				800CC103243E374A00C53F58 /* ColorsConstants.swift in Sources */,
 				800CC106243E666200C53F58 /* StatusBarColor.swift in Sources */,
+				800CC108243E6A7600C53F58 /* LyricsScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
