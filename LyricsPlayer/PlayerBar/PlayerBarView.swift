@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct PlayerBarView: View {
+    
+    @State var songTime: Double = 0.0
+    @State var songVolume: Double = 0.0
+    
     var body: some View {
         
         HStack {
@@ -18,6 +22,16 @@ struct PlayerBarView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.1)
             
             songControls
+            
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width * 0.05)
+            
+            songTimeSlider
+            
+            Spacer()
+                .frame(width: UIScreen.main.bounds.width * 0.05)
+            
+            songVolumeSlider
         }
         
     }
@@ -71,6 +85,38 @@ struct PlayerBarView: View {
         }
     }
     
+    var songTimeSlider: some View {
+        HStack {
+            Text("4:23")
+                .foregroundColor(Color(red: 142/255, green: 142/255, blue: 147/255))
+                .frame(width: 50)
+            
+            Spacer()
+                .frame(width: 10)
+            
+            Slider(value: $songTime)
+                .frame(width: UIScreen.main.bounds.width * 0.3)
+                .accentColor(Color.white)
+                .colorMultiply(Color(ColorsConstants.mainPink))
+        }
+    }
+    
+    var songVolumeSlider: some View {
+        HStack(spacing: 0) {
+            Image("volumeIcon")
+                .background(Color(red: 72/255, green: 72/255, blue: 74/255)
+                    .padding(EdgeInsets(top: -5, leading: -5, bottom: -5, trailing: -5))
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color(red: 72/255, green: 72/255, blue: 74/255), lineWidth: 5))
+            )
+                
+            
+            Slider(value: $songVolume)
+                .frame(width: UIScreen.main.bounds.width * 0.15)
+                .accentColor(Color.white)
+                .colorMultiply(Color(ColorsConstants.mainPink))
+        }
+    }
 }
 
 struct PlayerBarView_Previews: PreviewProvider {
