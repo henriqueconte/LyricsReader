@@ -29,16 +29,16 @@ struct Response: Codable {
 // MARK: - Hit
 struct Hit: Codable, Hashable {
     let index, type: String?
-    let result: Result?
+    let result: ResultMusic?
 }
 
 struct MusicHit: Codable, Hashable, Identifiable {
     let id: UUID = UUID()
-    let details: Result?
+    let details: ResultMusic?
 }
 
 // MARK: - Result
-struct Result: Codable, Hashable, Identifiable {
+struct ResultMusic: Codable, Hashable, Identifiable {
     let annotation_count: Int?
     let api_path, full_title: String?
     let header_image_thumbnail_url, header_image_url: String?

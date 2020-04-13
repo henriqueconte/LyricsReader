@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 final class WebService: ObservableObject {
-    @Published var currentSearc: MusicSearch = nil
+    @Published var currentSearc: MusicSearch? = nil
     
     @Published var newWordQueryFinished = false
     
