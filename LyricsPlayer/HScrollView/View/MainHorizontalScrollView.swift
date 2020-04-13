@@ -27,9 +27,9 @@ struct MainHorizontalScrollView: View {
                 print("JSON Error")
             case self.mostReadTracksData.tempImageString:
                 if(self.mostReadTracksData.tempImageString != "") {
-                    let imageURL = URL(string: self.mostReadTracksData.tempImageString)!
-                    let imageData = try? Data(contentsOf: imageURL)
-                    let albumUIImage = UIImage(data: imageData ?? Data())
+                    guard let imageURL = URL(string: self.mostReadTracksData.tempImageString) else { return }
+                    guard let imageData = try? Data(contentsOf: imageURL) else { return }
+                    let albumUIImage = UIImage(data: imageData)
                     albumImage = Image(uiImage: albumUIImage ?? UIImage())
                 }
             case "noAlbumImage":
@@ -82,7 +82,7 @@ struct MainHorizontalScrollView: View {
                                 
                                     .padding(7.5)
             }
-            
+        .buttonStyle(PlainButtonStyle())
         }
     }
     
