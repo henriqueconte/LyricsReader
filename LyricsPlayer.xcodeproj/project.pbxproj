@@ -47,6 +47,8 @@
 		8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8051D2E6243BAD2B008C162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		806EFD7124464D89008FD0DE /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		806EFD7224465277008FD0DE /* LyricsPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LyricsPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
 		80859A4C2444DF3B005FE335 /* SmallTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		80859A4D2444DF3B005FE335 /* BigTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigTextView.swift; sourceTree = "<group>"; };
 		80859A4E2444DF3B005FE335 /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		4810393D18A2F31E95A32F0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				806EFD7124464D89008FD0DE /* SpotifyiOS.framework */,
 				7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */,
 			);
 			name = Frameworks;
@@ -132,6 +135,7 @@
 				8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */,
 				8051D2E8243BAD2B008C162F /* Info.plist */,
 				8051D2E2243BAD2B008C162F /* Preview Content */,
+				806EFD7224465277008FD0DE /* LyricsPlayer-Bridging-Header.h */,
 			);
 			path = LyricsPlayer;
 			sourceTree = "<group>";
@@ -371,7 +375,6 @@
 				C0BB05D02444EB5000F81146 /* FavoritesData.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
 				80017E3A2444EC61002C4634 /* PlayerBarView.swift in Sources */,
-				E7E576CB2444D92500D6B6B1 /* SearchBarView.swift in Sources */,
 				C0CE29A3243FD32800DEEC7D /* MostReadModel.swift in Sources */,
 				C0956E66243D3ADA00E74C81 /* MarqueeText.swift in Sources */,
 				80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */,
@@ -379,7 +382,6 @@
 				C0956E66243D3ADA00E74C81 /* MarqueeText.swift in Sources */,
 				80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */,
 				E7448DD12444ED160023E2AD /* SearchBarView.swift in Sources */,
-				80859A4F2444DF3B005FE335 /* LyricsScrollView.swift in Sources */,
 				C05D204424450107002748E6 /* TrackAndAlbumModel.swift in Sources */,
 				C01F4C36243D14E00064B848 /* MainHorizontalScrollView.swift in Sources */,
 				C0CE29A7243FD8E000DEEC7D /* MostReadData.swift in Sources */,
@@ -461,6 +463,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "LyricsPlayer/LyricsPlayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -514,6 +517,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "LyricsPlayer/LyricsPlayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -535,7 +539,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SwiftSoup\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LyricsPlayer.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -559,7 +569,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SwiftSoup\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LyricsPlayer.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
