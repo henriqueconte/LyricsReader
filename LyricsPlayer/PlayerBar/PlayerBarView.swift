@@ -17,7 +17,6 @@ struct PlayerBarView: View {
         
         HStack {
             artistView
-                //.fixedSize()
             
             Spacer()
                 .frame(width: UIScreen.main.bounds.width * 0.07)
@@ -34,6 +33,8 @@ struct PlayerBarView: View {
             
             songVolumeSlider
         }
+        .frame(width: UIScreen.main.bounds.width * 0.88, height: 90, alignment: .top)
+        .padding(EdgeInsets(top: -15, leading: 0, bottom: 25, trailing: 0))
         
     }
     

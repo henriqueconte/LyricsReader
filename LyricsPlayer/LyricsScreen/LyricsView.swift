@@ -38,7 +38,6 @@ struct LyricsView: View {
                 .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
           
             PlayerBarView()
-                .frame(width: UIScreen.main.bounds.width * 0.88, height: 140, alignment: .center)
         }
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
