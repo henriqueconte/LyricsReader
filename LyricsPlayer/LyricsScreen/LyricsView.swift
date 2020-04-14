@@ -10,8 +10,10 @@ import SwiftUI
 
 struct LyricsView: View {
     
-    @State var text = ""
-    @State private var isBigTextActive: Bool = true
+    //@State var text = ""
+    var artistName: String
+    var trackName: String
+    @State private var isBigTextActive: Bool = false
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
     var switchButtonsTrailingInset = UIScreen.main.bounds.width * 0.87
@@ -23,10 +25,10 @@ struct LyricsView: View {
         VStack() {
             
             if self.isBigTextActive {
-                BigTextView()
+                BigTextView(artistName: artistName, trackName: trackName)
             }
             else {
-                SmallTextView()
+                SmallTextView(artistName: artistName, trackName: trackName)
             }
             
             gradientView
@@ -91,6 +93,6 @@ struct LyricsView: View {
 
 struct LyricsView_Previews: PreviewProvider {
     static var previews: some View {
-        LyricsView()
+        LyricsView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up")
     }
 }
