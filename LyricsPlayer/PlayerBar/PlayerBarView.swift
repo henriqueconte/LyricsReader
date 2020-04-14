@@ -17,9 +17,10 @@ struct PlayerBarView: View {
         
         HStack {
             artistView
+                //.fixedSize()
             
             Spacer()
-                .frame(width: UIScreen.main.bounds.width * 0.1)
+                .frame(width: UIScreen.main.bounds.width * 0.07)
             
             songControls
             
@@ -38,7 +39,7 @@ struct PlayerBarView: View {
     
     
     var artistView: some View {
-        HStack(spacing: 30) {
+        HStack(spacing: 20) {
             Image("blond")
                 .resizable()
                 .frame(width: 89, height: 89, alignment: .center)
@@ -49,7 +50,6 @@ struct PlayerBarView: View {
             VStack(alignment: .leading, spacing: 5, content: {
                 
                 Text("Like a Stone")
-                    
                     .font(.system(size: 21, weight: .medium, design: .default))
                     .foregroundColor(Color(red: 229/255, green: 229/255, blue: 234/255))
                 
@@ -58,8 +58,9 @@ struct PlayerBarView: View {
                     .foregroundColor(Color(red: 209/255, green: 209/255, blue: 214/255))
                 
                 Image("heartIcon")
-                
             })
+            .frame(width: UIScreen.main.bounds.width * 0.12)
+            
         }
     }
     
@@ -95,7 +96,7 @@ struct PlayerBarView: View {
                 .frame(width: 10)
             
             Slider(value: $songTime)
-                .frame(width: UIScreen.main.bounds.width * 0.3)
+                .frame(width: UIScreen.main.bounds.width * 0.26)
                 .accentColor(Color.white)
                 .colorMultiply(Color(ColorsConstants.mainPink))
         }
@@ -112,7 +113,7 @@ struct PlayerBarView: View {
                 
             
             Slider(value: $songVolume)
-                .frame(width: UIScreen.main.bounds.width * 0.15)
+                .frame(width: UIScreen.main.bounds.width * 0.12)
                 .accentColor(Color.white)
                 .colorMultiply(Color(ColorsConstants.mainPink))
         }

@@ -48,6 +48,7 @@
 		80859A4E2444DF3B005FE335 /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
 		80859A542444DF4A005FE335 /* ColorsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsConstants.swift; sourceTree = "<group>"; };
 		80859A552444DF4A005FE335 /* StatusBarColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarColor.swift; sourceTree = "<group>"; };
+		80EA24C92446297000F04808 /* LyricsPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyricsPlayer.entitlements; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHorizontalScrollView.swift; sourceTree = "<group>"; };
 		C0655C4624424DC1007E077A /* AlbumImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImageModel.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				80EA24C92446297000F04808 /* LyricsPlayer.entitlements */,
 				80017E382444EC4F002C4634 /* PlayerBar */,
 				80859A532444DF4A005FE335 /* Support */,
 				80859A4A2444DF3B005FE335 /* LyricsScreen */,
@@ -493,6 +495,7 @@
 			baseConfigurationReference = A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LyricsPlayer/LyricsPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NP5AK64M5;
@@ -505,6 +508,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -515,6 +519,7 @@
 			baseConfigurationReference = 5A44ACD6461E3293A8666DF2 /* Pods-LyricsPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LyricsPlayer/LyricsPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = 4NP5AK64M5;
@@ -527,6 +532,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

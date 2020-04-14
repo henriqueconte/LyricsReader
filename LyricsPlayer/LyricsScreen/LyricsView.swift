@@ -14,7 +14,7 @@ struct LyricsView: View {
     @State private var isBigTextActive: Bool = true
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
-    var switchButtonsTrailingInset = UIScreen.main.bounds.width * 0.8
+    var switchButtonsTrailingInset = UIScreen.main.bounds.width * 0.87
     
     var gradientViewTopInset = -UIScreen.main.bounds.height * 0.15
     
@@ -33,10 +33,10 @@ struct LyricsView: View {
                 .padding(EdgeInsets(top: gradientViewTopInset, leading: 0, bottom: 0, trailing:0))
             
             switchButtons
-            .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
+                .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
           
             PlayerBarView()
-                .frame(width: UIScreen.main.bounds.width, height: 170, alignment: .center)
+                .frame(width: UIScreen.main.bounds.width * 0.88, height: 140, alignment: .center)
         }
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
