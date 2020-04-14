@@ -34,15 +34,14 @@ struct SearchBarView: View {
                     .background(Color(red: 255 / 255, green: 55 / 255, blue: 95 / 255))
                 
                 
-                NavigationLink(destination: SearchResultView()) {
+                NavigationLink(destination: SearchResultView(searchText: searchText).environmentObject(SearchResultViewModel())) {
                     Image("searchIcon").renderingMode(.original)
                 }
             }
-            
-
         }
     }
 }
+
 
 struct SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
