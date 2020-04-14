@@ -103,9 +103,9 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				E7721BD52444F9DB00A4DFEA /* SearchResult */,
 				80859A532444DF4A005FE335 /* Support */,
 				80859A4A2444DF3B005FE335 /* LyricsScreen */,
+				E7721BD52444F9DB00A4DFEA /* SearchResult */,
 				E7E576C82444D8FC00D6B6B1 /* SearchView */,
 				C0CE299E243FD26E00DEEC7D /* HScrollView */,
 				8051D2DA243BAD29008C162F /* AppDelegate.swift */,

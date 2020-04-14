@@ -35,24 +35,11 @@ struct SearchBarView: View {
                 
                 
                 NavigationLink(destination: SearchResultView()) {
-//                    Button(action: {
-//                        self.webservice.fetchSearchMusicData(musicName: self.searchText) { (result) -> (Void) in
-//                            for musicHit in result?.response?.hits ?? [] {
-//                                self.musicList.append(MusicHit(details: musicHit.result))
-//                            }
-//                        }
-//                    }, label: {
                     Image("searchIcon").renderingMode(.original)
-//                    })
-//                }
                 }
             }
             
-            //            List {
-            //                ForEach(self.musicList, id: \.self) { music in
-            //                    Text((music.details?.title ?? "") + " - " + (music.details?.primary_artist?.name ?? ""))
-            //                }
-            //            }
+
         }
     }
 }
