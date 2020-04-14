@@ -46,7 +46,9 @@ struct MainHorizontalScrollView: View {
     
     var horizontalScrollCollectionCell: some View {
         ForEach(isFavoritesView ? self.favoritesData.favoriteTracks : self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
-            NavigationLink(destination: LyricsView(artistName: trackAndAlbum.track?.artistName ?? "", trackName: trackAndAlbum.track?.trackName ?? "")) {
+            NavigationLink(destination: LyricsView(artistName: trackAndAlbum.track?.artistName ?? "", trackName: trackAndAlbum.track?.trackName ?? "")
+                .environmentObject(WebService())
+                .environmentObject(HTMLParse())) {
                 trackAndAlbum.album?
                     .resizable()
                     .cornerRadius(5)

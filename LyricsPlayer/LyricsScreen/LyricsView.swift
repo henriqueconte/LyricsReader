@@ -10,10 +10,12 @@ import SwiftUI
 
 struct LyricsView: View {
     
-    //@State var text = ""
+    @EnvironmentObject var webService: WebService
+    @EnvironmentObject var htmlParse: HTMLParse
     var artistName: String
     var trackName: String
-    @State private var isBigTextActive: Bool = false
+    @State var songLyrics: String = "Loading lyrics..."
+    @State private var isBigTextActive: Bool = true
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
     var switchButtonsTrailingInset = UIScreen.main.bounds.width * 1.1
@@ -24,10 +26,10 @@ struct LyricsView: View {
         VStack() {
             
             if self.isBigTextActive {
-                BigTextView(artistName: artistName, trackName: trackName)
+                BigTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
             }
             else {
-                SmallTextView(artistName: artistName, trackName: trackName)
+                SmallTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
             }
             
             gradientView
@@ -39,6 +41,21 @@ struct LyricsView: View {
         }
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
+        .onAppear() {
+            self.webService.fetchSearchMusicData(musicName: self.artistName + " " + self.trackName) { (result) -> (Void) in
+//                for musicHit in result?.response?.hits ?? [] {
+//                    self.musicList.append(MusicHit(details: musicHit.result))
+//                }
+                if(result?.response?.hits == []) {
+                    self.songLyrics = "Lyrics not found."
+                } else {
+                    let lyricsHTMLLink: String = result?.response?.hits?[0].result?.url ?? ""
+                    self.htmlParse.getHTMLString(urlString: lyricsHTMLLink)
+                    self.songLyrics = self.htmlParse.getSongLyrics(htmlString: self.htmlParse.htmlString ?? "")
+                    //print(self.songLyrics)
+                }
+            }
+        }
     }
     
     var switchButtons: some View {

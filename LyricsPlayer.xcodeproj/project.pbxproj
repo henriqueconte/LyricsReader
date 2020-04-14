@@ -20,6 +20,7 @@
 		80859A562444DF4A005FE335 /* ColorsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A542444DF4A005FE335 /* ColorsConstants.swift */; };
 		80859A572444DF4A005FE335 /* StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A552444DF4A005FE335 /* StatusBarColor.swift */; };
 		C01F4C36243D14E00064B848 /* MainHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */; };
+		C03F9F902446386300F3C3CA /* LyricsHTMLParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F9F8F2446386300F3C3CA /* LyricsHTMLParse.swift */; };
 		C05D204424450107002748E6 /* TrackAndAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D204324450107002748E6 /* TrackAndAlbumModel.swift */; };
 		C05D20462445014D002748E6 /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05D20452445014D002748E6 /* FavoritesModel.swift */; };
 		C0655C4724424DC1007E077A /* AlbumImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0655C4624424DC1007E077A /* AlbumImageModel.swift */; };
@@ -54,6 +55,7 @@
 		80859A552444DF4A005FE335 /* StatusBarColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarColor.swift; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHorizontalScrollView.swift; sourceTree = "<group>"; };
+		C03F9F8F2446386300F3C3CA /* LyricsHTMLParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsHTMLParse.swift; sourceTree = "<group>"; };
 		C05D204324450107002748E6 /* TrackAndAlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAndAlbumModel.swift; sourceTree = "<group>"; };
 		C05D20452445014D002748E6 /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
 		C0655C4624424DC1007E077A /* AlbumImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImageModel.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				80859A4C2444DF3B005FE335 /* SmallTextView.swift */,
 				80859A4D2444DF3B005FE335 /* BigTextView.swift */,
 				80859A4E2444DF3B005FE335 /* LyricsView.swift */,
+				C03F9F8F2446386300F3C3CA /* LyricsHTMLParse.swift */,
 			);
 			path = LyricsScreen;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				E7797541243CF73200085F75 /* WebService.swift in Sources */,
 				80859A512444DF3B005FE335 /* BigTextView.swift in Sources */,
 				8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */,
+				C03F9F902446386300F3C3CA /* LyricsHTMLParse.swift in Sources */,
 				E7721BD72444F9F200A4DFEA /* SearchResultView.swift in Sources */,
 				80859A572444DF4A005FE335 /* StatusBarColor.swift in Sources */,
 				C0D98450243E470900A934E7 /* InnerShadowView.swift in Sources */,
