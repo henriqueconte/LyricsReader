@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 SearchBarView()
-                .environmentObject(WebService())
+                    .environmentObject(WebService())
                 
                 MainHorizontalScrollView(isFavoritesView: true)
                     .environmentObject(MostReadData())
