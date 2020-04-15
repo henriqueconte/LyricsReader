@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80017E3A2444EC61002C4634 /* PlayerBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80017E392444EC61002C4634 /* PlayerBarView.swift */; };
 		8051D2DB243BAD29008C162F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DA243BAD29008C162F /* AppDelegate.swift */; };
 		8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DC243BAD29008C162F /* SceneDelegate.swift */; };
 		8051D2DF243BAD29008C162F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8051D2DE243BAD29008C162F /* ContentView.swift */; };
 		8051D2E1243BAD2B008C162F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E0243BAD2B008C162F /* Assets.xcassets */; };
 		8051D2E4243BAD2B008C162F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */; };
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
-		80859A4F2444DF3B005FE335 /* LyricsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4B2444DF3B005FE335 /* LyricsScrollView.swift */; };
 		80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4C2444DF3B005FE335 /* SmallTextView.swift */; };
 		80859A512444DF3B005FE335 /* BigTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4D2444DF3B005FE335 /* BigTextView.swift */; };
 		80859A522444DF3B005FE335 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4E2444DF3B005FE335 /* LyricsView.swift */; };
@@ -40,6 +40,7 @@
 /* Begin PBXFileReference section */
 		5A44ACD6461E3293A8666DF2 /* Pods-LyricsPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.release.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		7F589AAE8F1983F8C76C2613 /* Pods_LyricsPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LyricsPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80017E392444EC61002C4634 /* PlayerBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBarView.swift; sourceTree = "<group>"; };
 		8051D2D7243BAD29008C162F /* LyricsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8051D2DA243BAD29008C162F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8051D2DC243BAD29008C162F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,12 +49,12 @@
 		8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8051D2E6243BAD2B008C162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80859A4B2444DF3B005FE335 /* LyricsScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsScrollView.swift; sourceTree = "<group>"; };
 		80859A4C2444DF3B005FE335 /* SmallTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		80859A4D2444DF3B005FE335 /* BigTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigTextView.swift; sourceTree = "<group>"; };
 		80859A4E2444DF3B005FE335 /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
 		80859A542444DF4A005FE335 /* ColorsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsConstants.swift; sourceTree = "<group>"; };
 		80859A552444DF4A005FE335 /* StatusBarColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarColor.swift; sourceTree = "<group>"; };
+		80EA24C92446297000F04808 /* LyricsPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyricsPlayer.entitlements; sourceTree = "<group>"; };
 		A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LyricsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-LyricsPlayer/Pods-LyricsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		C01F4C35243D14E00064B848 /* MainHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHorizontalScrollView.swift; sourceTree = "<group>"; };
 		C05D204324450107002748E6 /* TrackAndAlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAndAlbumModel.swift; sourceTree = "<group>"; };
@@ -92,6 +93,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		80017E382444EC4F002C4634 /* PlayerBar */ = {
+			isa = PBXGroup;
+			children = (
+				80017E392444EC61002C4634 /* PlayerBarView.swift */,
+			);
+			path = PlayerBar;
+			sourceTree = "<group>";
+		};
 		8051D2CE243BAD29008C162F = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +122,8 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				80EA24C92446297000F04808 /* LyricsPlayer.entitlements */,
+				80017E382444EC4F002C4634 /* PlayerBar */,
 				80859A532444DF4A005FE335 /* Support */,
 				80859A4A2444DF3B005FE335 /* LyricsScreen */,
 				E7721BD52444F9DB00A4DFEA /* SearchResult */,
@@ -140,7 +151,6 @@
 		80859A4A2444DF3B005FE335 /* LyricsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				80859A4B2444DF3B005FE335 /* LyricsScrollView.swift */,
 				80859A4C2444DF3B005FE335 /* SmallTextView.swift */,
 				80859A4D2444DF3B005FE335 /* BigTextView.swift */,
 				80859A4E2444DF3B005FE335 /* LyricsView.swift */,
@@ -366,13 +376,13 @@
 				80859A562444DF4A005FE335 /* ColorsConstants.swift in Sources */,
 				C0BB05D02444EB5000F81146 /* FavoritesData.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
+				80017E3A2444EC61002C4634 /* PlayerBarView.swift in Sources */,
 				C0CE29A3243FD32800DEEC7D /* MostReadModel.swift in Sources */,
 				C0956E66243D3ADA00E74C81 /* MarqueeText.swift in Sources */,
 				80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */,
 				E7C5A995244632DB005BF434 /* SearchResultViewModel.swift in Sources */,
 				E7448DD12444ED160023E2AD /* SearchBarView.swift in Sources */,
 				E7C5A997244646C0005BF434 /* ImageLoader.swift in Sources */,
-				80859A4F2444DF3B005FE335 /* LyricsScrollView.swift in Sources */,
 				C05D204424450107002748E6 /* TrackAndAlbumModel.swift in Sources */,
 				C01F4C36243D14E00064B848 /* MainHorizontalScrollView.swift in Sources */,
 				C0CE29A7243FD8E000DEEC7D /* MostReadData.swift in Sources */,
@@ -517,6 +527,7 @@
 			baseConfigurationReference = A6D694AB28F98BD9F94754D8 /* Pods-LyricsPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LyricsPlayer/LyricsPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = RL63GUXBB4;
@@ -529,6 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -539,6 +551,7 @@
 			baseConfigurationReference = 5A44ACD6461E3293A8666DF2 /* Pods-LyricsPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LyricsPlayer/LyricsPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = X7GM9H5PAT;
@@ -551,6 +564,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = henriqueConte.LyricsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

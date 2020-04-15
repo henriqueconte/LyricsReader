@@ -24,6 +24,8 @@ struct SearchBarView: View {
     @State var musicList: [MusicHit] = []
     @State private var searchText : String = ""
     
+    @State var isActive : Bool = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -34,7 +36,7 @@ struct SearchBarView: View {
                     .background(Color(red: 255 / 255, green: 55 / 255, blue: 95 / 255))
                 
                 
-                NavigationLink(destination: SearchResultView(searchText: searchText).environmentObject(SearchResultViewModel())) {
+                NavigationLink(destination: SearchResultView(searchText: searchText, shouldPopToRootView: self.$isActive).environmentObject(SearchResultViewModel()), isActive: self.$isActive) {
                     Image("searchIcon").renderingMode(.original)
                 }
             }
