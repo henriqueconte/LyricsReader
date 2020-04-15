@@ -21,7 +21,6 @@ class HTMLParse: ObservableObject {
 
         do {
             let myHTMLString = try String(contentsOf: myURL, encoding: .ascii)
-            //print("HTML : \(myHTMLString)")
             self.htmlString = myHTMLString
         } catch let error {
             print("Error: \(error)")
@@ -30,22 +29,14 @@ class HTMLParse: ObservableObject {
     
     func getSongLyrics(htmlString: String) -> String {
         do {
-            //let newHtmlString = htmlString.replacingOccurrences(of: "\n", with: "</br>")
-            
             let doc: Document = try SwiftSoup.parse(htmlString)
-            
             let songLink: Element = try doc.select("p").first()!
-            
             let newHtmlString: String = try songLink.html()
-            
             let newDoc: Document = try SwiftSoup.parse(newHtmlString)
             
             newDoc.outputSettings().prettyPrint(pretty: false)
-            
             try newDoc.select("br").append("\n");
-            
             let s: String = try newDoc.html().replacingOccurrences(of: "\\\\n", with: "\n");
-            
             let s2: String = try SwiftSoup.clean(s, "", Whitelist.none(), Document("").outputSettings().prettyPrint(pretty: false)) ?? ""
             
             //print(s2)

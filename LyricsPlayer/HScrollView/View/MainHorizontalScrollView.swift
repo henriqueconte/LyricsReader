@@ -38,7 +38,7 @@ struct MainHorizontalScrollView: View {
             }
             
             DispatchQueue.main.async {
-                self.mostReadTracksData.tracksAndAlbums[index] = TrackAndAlbum(track: trackInfo.track, album: albumImage)
+                self.mostReadTracksData.tracksAndAlbums[index] = TrackAndAlbum(track: trackInfo.track ?? Track(trackID: 0, trackName: "", albumName: "", artistName: ""), album: albumImage)
                 group.leave()
             }
         })
@@ -46,7 +46,7 @@ struct MainHorizontalScrollView: View {
     
     var horizontalScrollCollectionCell: some View {
         ForEach(isFavoritesView ? self.favoritesData.favoriteTracks : self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
-            NavigationLink(destination: LyricsView(artistName: trackAndAlbum.track?.artistName ?? "", trackName: trackAndAlbum.track?.trackName ?? "")
+            NavigationLink(destination: LyricsView(trackInfo: trackAndAlbum)
                 .environmentObject(WebService())
                 .environmentObject(HTMLParse())) {
                 trackAndAlbum.album?
@@ -75,6 +75,7 @@ struct MainHorizontalScrollView: View {
                         .padding(8)
                     )
                      
+                    // For moving text (not functional)
     //                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
     //                .font(.system(size: 12))
     //                     .padding(4))
