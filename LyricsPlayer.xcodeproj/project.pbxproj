@@ -14,6 +14,8 @@
 		8051D2E1243BAD2B008C162F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E0243BAD2B008C162F /* Assets.xcassets */; };
 		8051D2E4243BAD2B008C162F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */; };
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
+		8078D498244772AF002DFA99 /* SpotifyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078D497244772AF002DFA99 /* SpotifyConnection.swift */; };
+		8078D49B24478098002DFA99 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806EFD7124464D89008FD0DE /* SpotifyiOS.framework */; };
 		80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4C2444DF3B005FE335 /* SmallTextView.swift */; };
 		80859A512444DF3B005FE335 /* BigTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4D2444DF3B005FE335 /* BigTextView.swift */; };
 		80859A522444DF3B005FE335 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4E2444DF3B005FE335 /* LyricsView.swift */; };
@@ -49,6 +51,7 @@
 		8051D2E8243BAD2B008C162F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		806EFD7124464D89008FD0DE /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		806EFD7224465277008FD0DE /* LyricsPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LyricsPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		8078D497244772AF002DFA99 /* SpotifyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConnection.swift; sourceTree = "<group>"; };
 		80859A4C2444DF3B005FE335 /* SmallTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		80859A4D2444DF3B005FE335 /* BigTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigTextView.swift; sourceTree = "<group>"; };
 		80859A4E2444DF3B005FE335 /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BE40F31A23D76F82E351EA /* Pods_LyricsPlayer.framework in Frameworks */,
+				8078D49B24478098002DFA99 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,7 @@
 		8051D2D9243BAD29008C162F /* LyricsPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				8078D49624477295002DFA99 /* Spotify */,
 				80EA24C92446297000F04808 /* LyricsPlayer.entitlements */,
 				80017E382444EC4F002C4634 /* PlayerBar */,
 				E7721BD52444F9DB00A4DFEA /* SearchResult */,
@@ -146,6 +151,14 @@
 				8051D2E3243BAD2B008C162F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8078D49624477295002DFA99 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				8078D497244772AF002DFA99 /* SpotifyConnection.swift */,
+			);
+			path = Spotify;
 			sourceTree = "<group>";
 		};
 		80859A4A2444DF3B005FE335 /* LyricsScreen */ = {
@@ -389,6 +402,7 @@
 				C0655C4724424DC1007E077A /* AlbumImageModel.swift in Sources */,
 				8051D2DF243BAD29008C162F /* ContentView.swift in Sources */,
 				E779753F243CF71A00085F75 /* MusicSearch.swift in Sources */,
+				8078D498244772AF002DFA99 /* SpotifyConnection.swift in Sources */,
 				C05D20462445014D002748E6 /* FavoritesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,8 +545,12 @@
 				CODE_SIGN_ENTITLEMENTS = LyricsPlayer/LyricsPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
-				DEVELOPMENT_TEAM = RL63GUXBB4;
+				DEVELOPMENT_TEAM = 4NP5AK64M5;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LyricsPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -563,6 +581,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LyricsPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = X7GM9H5PAT;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LyricsPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,5 +9,7 @@
 #ifndef LyricsPlayer_Bridging_Header_h
 #define LyricsPlayer_Bridging_Header_h
 
+#import <SpotifyiOS/SpotifyiOS.h>
+
 
 #endif /* LyricsPlayer_Bridging_Header_h */
