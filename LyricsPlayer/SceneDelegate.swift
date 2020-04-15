@@ -19,12 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     
     //var playURI: String = "spotify:track:20I6sIOMTCkB6w7ryavxtO"
     var playURI: String = ""
-    
+    var currentTrackName: String = ""
     
     lazy var configuration = SPTConfiguration(
         clientID: spotifyClientID,
         redirectURL: spotifyRedirectURL)
-    
     
     lazy var appRemote: SPTAppRemote = {
       let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
@@ -39,14 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
             defaults.set(accessToken, forKey: SceneDelegate.kAccessTokenKey)
         }
     }
-    
-    var playerViewController: UIViewController {
-        get {
-            let navController = self.window?.rootViewController?.children[0] as! UINavigationController
-            
-            return navController.topViewController!
-        }
-    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -54,14 +45,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        //let contentView = ContentView()
+        let contentView = SpotifyTestView()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = DarkHostingController(rootView: contentView)
             self.window = window
-            connect()
+            //connect()
             window.makeKeyAndVisible()
         }
     }
@@ -143,6 +135,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, SPTAppRemoteDelegate, S
     }
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        currentTrackName = playerState.track.name
         debugPrint("Track name: %@", playerState.track.name)
     }
     

@@ -13,6 +13,8 @@ struct PlayerBarView: View {
     @State var songTime: Double = 0.0
     @State var songVolume: Double = 0.0
     
+    let spotifyConnection = SpotifyConnection()
+    
     var body: some View {
         
         HStack {
@@ -74,7 +76,7 @@ struct PlayerBarView: View {
             }
             
             Button(action: {
-                
+                self.spotifyConnection.connectMusic()
             }) {
                 Image("pauseSongIcon")
             }

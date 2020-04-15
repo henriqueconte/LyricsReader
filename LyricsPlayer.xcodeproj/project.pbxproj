@@ -16,6 +16,7 @@
 		8051D2E7243BAD2B008C162F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8051D2E5243BAD2B008C162F /* LaunchScreen.storyboard */; };
 		8078D498244772AF002DFA99 /* SpotifyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078D497244772AF002DFA99 /* SpotifyConnection.swift */; };
 		8078D49B24478098002DFA99 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806EFD7124464D89008FD0DE /* SpotifyiOS.framework */; };
+		8078D49D24479E91002DFA99 /* SpotifyTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078D49C24479E91002DFA99 /* SpotifyTestView.swift */; };
 		80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4C2444DF3B005FE335 /* SmallTextView.swift */; };
 		80859A512444DF3B005FE335 /* BigTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4D2444DF3B005FE335 /* BigTextView.swift */; };
 		80859A522444DF3B005FE335 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80859A4E2444DF3B005FE335 /* LyricsView.swift */; };
@@ -52,6 +53,7 @@
 		806EFD7124464D89008FD0DE /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		806EFD7224465277008FD0DE /* LyricsPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LyricsPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
 		8078D497244772AF002DFA99 /* SpotifyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConnection.swift; sourceTree = "<group>"; };
+		8078D49C24479E91002DFA99 /* SpotifyTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTestView.swift; sourceTree = "<group>"; };
 		80859A4C2444DF3B005FE335 /* SmallTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTextView.swift; sourceTree = "<group>"; };
 		80859A4D2444DF3B005FE335 /* BigTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigTextView.swift; sourceTree = "<group>"; };
 		80859A4E2444DF3B005FE335 /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				8078D497244772AF002DFA99 /* SpotifyConnection.swift */,
+				8078D49C24479E91002DFA99 /* SpotifyTestView.swift */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				C0BB05D02444EB5000F81146 /* FavoritesData.swift in Sources */,
 				8051D2DD243BAD29008C162F /* SceneDelegate.swift in Sources */,
 				80017E3A2444EC61002C4634 /* PlayerBarView.swift in Sources */,
+				8078D49D24479E91002DFA99 /* SpotifyTestView.swift in Sources */,
 				C0CE29A3243FD32800DEEC7D /* MostReadModel.swift in Sources */,
 				C0956E66243D3ADA00E74C81 /* MarqueeText.swift in Sources */,
 				80859A502444DF3B005FE335 /* SmallTextView.swift in Sources */,
