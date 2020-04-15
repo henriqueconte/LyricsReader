@@ -15,7 +15,7 @@ struct LyricsView: View {
     var artistName: String
     var trackName: String
     @State var songLyrics: String = "Loading lyrics..."
-    @State private var isBigTextActive: Bool = true
+    @State private var isBigTextActive: Bool = false
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
     var switchButtonsTrailingInset = UIScreen.main.bounds.width * 1.1
@@ -42,14 +42,24 @@ struct LyricsView: View {
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
         .onAppear() {
-            self.webService.fetchSearchMusicData(musicName: self.artistName + " " + self.trackName) { (result) -> (Void) in
-//                for musicHit in result?.response?.hits ?? [] {
-//                    self.musicList.append(MusicHit(details: musicHit.result))
-//                }
+            self.webService.fetchSearchMusicData(musicName: self.trackName + " " + self.artistName) { (result) -> (Void) in
                 if(result?.response?.hits == []) {
                     self.songLyrics = "Lyrics not found."
                 } else {
-                    let lyricsHTMLLink: String = result?.response?.hits?[0].result?.url ?? ""
+                    // check if lyrics are a translation of the original
+                    var hitsCount: Int = 0
+                    while(true) {
+                        guard let fullSongTitle: String = result?.response?.hits?[hitsCount].result?.full_title else { return }
+                        let components = fullSongTitle.components(separatedBy: .whitespacesAndNewlines)
+                        let words = components.filter { !$0.isEmpty }
+                        if(words.contains("by") && words.contains("Genius")){
+                            hitsCount += 1
+                        } else {
+                            break
+                        }
+                    }
+                    
+                    let lyricsHTMLLink: String = result?.response?.hits?[hitsCount].result?.url ?? ""
                     self.htmlParse.getHTMLString(urlString: lyricsHTMLLink)
                     self.songLyrics = self.htmlParse.getSongLyrics(htmlString: self.htmlParse.htmlString ?? "")
                     //print(self.songLyrics)
@@ -110,3 +120,4 @@ struct LyricsView_Previews: PreviewProvider {
         LyricsView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up")
     }
 }
+

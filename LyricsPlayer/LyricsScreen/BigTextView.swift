@@ -64,7 +64,7 @@ struct BigTextView: View {
         Text(songLyrics)
             .multilineTextAlignment(.center)
             .foregroundColor(.white)
-        .frame(minWidth: 0, maxWidth: 1000, minHeight: 0, maxHeight: .infinity)
+            .frame(minWidth: 0, maxWidth: 1000, minHeight: 0, maxHeight: .infinity)
             //.padding(EdgeInsets(top: 20, leading: 100, bottom: 0, trailing: 100))
     }
   
