@@ -11,7 +11,7 @@ import SwiftUI
 struct PlayerBarView: View {
     
     @State var songTime: Double = 0.0
-    @State var songVolume: Double = 0.0
+    @State var songVolume: Double = 0.8
     
     var body: some View {
         
@@ -35,7 +35,6 @@ struct PlayerBarView: View {
         }
         .frame(width: UIScreen.main.bounds.width * 0.88, height: 90, alignment: .top)
         .padding(EdgeInsets(top: -15, leading: 0, bottom: 25, trailing: 0))
-        
     }
     
     
