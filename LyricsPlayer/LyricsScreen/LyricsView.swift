@@ -10,9 +10,11 @@ import SwiftUI
 
 struct LyricsView: View {
     
-    //@State var text = ""
+    @EnvironmentObject var webService: WebService
+    @EnvironmentObject var htmlParse: HTMLParse
     var artistName: String
     var trackName: String
+    @State var songLyrics: String = "Loading lyrics..."
     @State private var isBigTextActive: Bool = false
     
     var switchButtonsTopInset = -UIScreen.main.bounds.height * 0.091
@@ -23,12 +25,35 @@ struct LyricsView: View {
     
     var body: some View {
         VStack() {
-            
-            if self.isBigTextActive {
-                BigTextView(artistName: artistName, trackName: trackName)
-            }
-            else {
-                SmallTextView(artistName: artistName, trackName: trackName)
+            HStack {
+                if self.isBigTextActive {
+                    BigTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
+                }
+                else {
+                    SmallTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
+                }
+                
+                // MARK:- Favoritar aqui Felipe!!!
+                Button(action: {
+                    do {
+                        let defaults = UserDefaults.standard
+                        var storedTracks: [FavoriteTrack]
+                        if let storedObject = defaults.object(forKey: "favoriteTracks") as? Data {
+                            storedTracks = try PropertyListDecoder().decode([FavoriteTrack].self, from: storedObject)
+                        } else {
+                            storedTracks = []
+                        }
+                        
+                        let newFavoriteTrack: FavoriteTrack = FavoriteTrack(artistName: self.artistName, trackName: self.trackName, lyrics: self.songLyrics)
+                        storedTracks.append(newFavoriteTrack)
+                        UserDefaults.standard.set(try PropertyListEncoder().encode(storedTracks), forKey: "favoriteTracks")
+                        
+                    } catch {
+                        print("Failed saving favorite track to UserDefaults")
+                    }
+                }) {
+                    Image("heartIcon")
+                }
             }
             
             gradientView
@@ -41,6 +66,31 @@ struct LyricsView: View {
         }
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
+        .onAppear() {
+            self.webService.fetchSearchMusicData(musicName: self.trackName + " " + self.artistName) { (result) -> (Void) in
+                if(result?.response?.hits == []) {
+                    self.songLyrics = "Lyrics not found."
+                } else {
+                    // check if lyrics are a translation of the original
+                    var hitsCount: Int = 0
+                    while(true) {
+                        guard let fullSongTitle: String = result?.response?.hits?[hitsCount].result?.full_title else { return }
+                        let components = fullSongTitle.components(separatedBy: .whitespacesAndNewlines)
+                        let words = components.filter { !$0.isEmpty }
+                        if(words.contains("by") && words.contains("Genius")){
+                            hitsCount += 1
+                        } else {
+                            break
+                        }
+                    }
+                    
+                    let lyricsHTMLLink: String = result?.response?.hits?[hitsCount].result?.url ?? ""
+                    self.htmlParse.getHTMLString(urlString: lyricsHTMLLink)
+                    self.songLyrics = self.htmlParse.getSongLyrics(htmlString: self.htmlParse.htmlString ?? "")
+                    //print(self.songLyrics)
+                }
+            }
+        }
     }
     
     var switchButtons: some View {
@@ -95,3 +145,4 @@ struct LyricsView_Previews: PreviewProvider {
         LyricsView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up")
     }
 }
+

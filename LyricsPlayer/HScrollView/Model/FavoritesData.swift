@@ -11,5 +11,5 @@ import Combine
 import SwiftUI
 
 class FavoritesData: ObservableObject {
-    @Published var favoriteTracks: [TrackAndAlbum] = [TrackAndAlbum(track: Track(trackID: 0, trackName: "Loading...", albumName: "", artistName: ""), album: Image("noAlbumImage"))]
+    @Published var favoriteTracks: [FavoriteTrack] = []
 }

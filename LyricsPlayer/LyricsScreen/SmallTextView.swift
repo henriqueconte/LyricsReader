@@ -12,6 +12,7 @@ struct SmallTextView: View {
     
     var artistName: String
     var trackName: String
+    @Binding var songLyrics: String
     
     var bottomPadding: CGFloat = UIScreen.main.bounds.height / 16
     
@@ -27,12 +28,12 @@ struct SmallTextView: View {
 
         HStack {
             VStack {
-                Text(artistName)
+                Text(trackName)
                 .font(.system(size: 35))
                 .bold()
                 .lineLimit(1)
                 
-                Text(trackName)
+                Text(artistName)
                 .font(.system(size: 21))
                 
             }
@@ -45,19 +46,20 @@ struct SmallTextView: View {
     
     var lyrics: some View {
         ScrollView(.vertical, showsIndicators: true, content: {
-            Text("We're no strangers to love\nYou know the rules and so do I\nA full commitment's what I'm thinking of\nYou wouldn't get this from any other guy\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nWe've known each other for so long\nYour heart's been aching but you're too shy to say it\nInside we both know what's been going on\nWe know the game and we're gonna play it\nAnd if you ask me how I'm feeling\nDon't tell me you're too blind to see\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give, never gonna give\n(Give you up)\n(Ooh) Never gonna give, never gonna give\n(Give you up)\nWe've known each other for so long\nYour heart's been aching but you're too shy to say it\nInside we both know what's been going on\nWe know the game and we're gonna play it\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\n")
+            Text(songLyrics)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.white)
-                .padding(EdgeInsets(top: 20, leading: 100, bottom: 0, trailing: 100))
+                .frame(minWidth: 0, maxWidth: 1000, minHeight: 0, maxHeight: .infinity)
+                //.padding(EdgeInsets(top: 20, leading: 100, bottom: 0, trailing: 100))
         })
             .font(.system(size: 23))
             .colorScheme(.dark)
-            .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
+            //.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
     }
 }
 
 struct SmallTextView_Previews: PreviewProvider {
     static var previews: some View {
-        SmallTextView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up")
+        SmallTextView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up", songLyrics: .constant("We're no strangers to love\nYou know the rules and so do I\nA full commitment's what I'm thinking of\nYou wouldn't get this from any other guy\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nWe've known each other for so long\nYour heart's been aching but you're too shy to say it\nInside we both know what's been going on\nWe know the game and we're gonna play it\nAnd if you ask me how I'm feeling\nDon't tell me you're too blind to see\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give, never gonna give\n(Give you up)\n(Ooh) Never gonna give, never gonna give\n(Give you up)\nWe've known each other for so long\nYour heart's been aching but you're too shy to say it\nInside we both know what's been going on\nWe know the game and we're gonna play it\nI just wanna tell you how I'm feeling\nGotta make you understand\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you\nNever gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\n"))
     }
 }

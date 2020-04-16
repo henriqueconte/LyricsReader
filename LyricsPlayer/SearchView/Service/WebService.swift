@@ -14,6 +14,8 @@ final class WebService: ObservableObject {
     
     @Published var newWordQueryFinished = false
     
+    //@Published var lyrics: String = ""
+    
     func fetchSearchMusicData(musicName: String, completion: @escaping (MusicSearch?) -> (Void)) {
         
         
