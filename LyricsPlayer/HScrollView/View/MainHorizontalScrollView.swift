@@ -66,7 +66,7 @@ struct MainHorizontalScrollView: View {
     
     var mostReadHorizontalScrollCollectionCell: some View {
         ForEach(self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
-            NavigationLink(destination: LyricsView(trackInfo: trackAndAlbum)
+            NavigationLink(destination: LyricsView(artistName: trackAndAlbum.track?.artistName ?? "", trackName: trackAndAlbum.track?.trackName ?? "")
                 .environmentObject(WebService())
                 .environmentObject(HTMLParse())) {
                 trackAndAlbum.album?
@@ -108,7 +108,7 @@ struct MainHorizontalScrollView: View {
     
     var favoritesHorizontalScrollCollectionCell: some View {
         ForEach(self.favoritesData.favoriteTracks, id: \.self) { favoriteTrack in
-            NavigationLink(destination: LyricsView(trackInfo: TrackAndAlbum(track: Track(trackID: 0, trackName: favoriteTrack.trackName, albumName: "", artistName: favoriteTrack.artistName), album: Image("noAlbumImage")))
+            NavigationLink(destination: LyricsView(artistName: favoriteTrack.artistName ?? "", trackName: favoriteTrack.trackName ?? "")
                 .environmentObject(WebService())
                 .environmentObject(HTMLParse())) {
                 Image("noAlbumImage")

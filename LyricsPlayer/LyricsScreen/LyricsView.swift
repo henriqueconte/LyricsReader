@@ -12,7 +12,8 @@ struct LyricsView: View {
     
     @EnvironmentObject var webService: WebService
     @EnvironmentObject var htmlParse: HTMLParse
-    var trackInfo: TrackAndAlbum
+    var artistName: String
+    var trackName: String
     @State var songLyrics: String = "Loading lyrics..."
     @State private var isBigTextActive: Bool = false
     
@@ -26,10 +27,10 @@ struct LyricsView: View {
         VStack() {
             HStack {
                 if self.isBigTextActive {
-                    BigTextView(trackInfo: trackInfo, songLyrics: $songLyrics)
+                    BigTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
                 }
                 else {
-                    SmallTextView(trackInfo: trackInfo, songLyrics: $songLyrics)
+                    SmallTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
                 }
                 
                 // MARK:- Favoritar aqui Felipe!!!
@@ -43,7 +44,7 @@ struct LyricsView: View {
                             storedTracks = []
                         }
                         
-                        let newFavoriteTrack: FavoriteTrack = FavoriteTrack(artistName: self.trackInfo.track?.artistName, trackName: self.trackInfo.track?.trackName, lyrics: self.songLyrics)
+                        let newFavoriteTrack: FavoriteTrack = FavoriteTrack(artistName: self.artistName, trackName: self.trackName, lyrics: self.songLyrics)
                         storedTracks.append(newFavoriteTrack)
                         UserDefaults.standard.set(try PropertyListEncoder().encode(storedTracks), forKey: "favoriteTracks")
                         
@@ -66,7 +67,7 @@ struct LyricsView: View {
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
         .onAppear() {
-            self.webService.fetchSearchMusicData(musicName: (self.trackInfo.track?.trackName ?? "") + " " + (self.trackInfo.track?.artistName ?? "")) { (result) -> (Void) in
+            self.webService.fetchSearchMusicData(musicName: self.trackName + " " + self.artistName) { (result) -> (Void) in
                 if(result?.response?.hits == []) {
                     self.songLyrics = "Lyrics not found."
                 } else {
@@ -141,7 +142,7 @@ struct LyricsView: View {
 
 struct LyricsView_Previews: PreviewProvider {
     static var previews: some View {
-        LyricsView(trackInfo: TrackAndAlbum(track: Track(trackID: 0, trackName: "Never Gonna Give You Up", albumName: "No idea", artistName: "Rick Astley"), album: Image("blond")))
+        LyricsView(artistName: "Rick Astley", trackName: "Never Gonna Give You Up")
     }
 }
 

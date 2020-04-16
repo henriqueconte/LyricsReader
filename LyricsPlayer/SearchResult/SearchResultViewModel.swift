@@ -20,7 +20,9 @@ class SearchResultViewModel: ObservableObject {
     func fetchResults() {
         WebService().fetchSearchMusicData(musicName: searchText) { (result) -> (Void) in
             for musicHit in result?.response?.hits ?? [] {
-                self.musicList.append(MusicHit(details: musicHit.result))
+                DispatchQueue.main.async {
+                    self.musicList.append(MusicHit(details: musicHit.result))
+                }
             }
         }
     }

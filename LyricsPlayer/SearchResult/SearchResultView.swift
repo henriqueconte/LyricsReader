@@ -29,7 +29,9 @@ struct SearchResultView: View {
                     GeometryReader { geometry in
                         List {
                             ForEach(self.model.musicList, id: \.self) { music in
-                                NavigationLink(destination: LyricsView(artistName: music.details?.primary_artist?.name ?? "", trackName: music.details?.title ?? "")) {
+                                NavigationLink(destination: LyricsView(artistName: music.details?.primary_artist?.name ?? "", trackName: music.details?.title ?? "")
+                                    .environmentObject(WebService())
+                                    .environmentObject(HTMLParse())) {
                                     HStack {
                                         Image(uiImage: music.details?.header_image_thumbnail_url?.getImageFromURL() ?? UIImage())
                                             .resizable()
