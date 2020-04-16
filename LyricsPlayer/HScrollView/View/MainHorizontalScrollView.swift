@@ -37,7 +37,7 @@ struct MainHorizontalScrollView: View {
         group.enter()
         self.mostReadTracksData.fetchAlbumImages(artist: trackInfo.track?.artistName ?? "", album: trackInfo.track?.albumName ?? "", completion: { (result) -> (Void) in
         
-            var albumImage: Image = Image("noAlbumImage")
+            var albumImage: Image = Image("darkSideOfTheMoon")
         
             switch(result) {
             case "JSON Error":
@@ -111,7 +111,7 @@ struct MainHorizontalScrollView: View {
             NavigationLink(destination: LyricsView(artistName: favoriteTrack.artistName ?? "", trackName: favoriteTrack.trackName ?? "")
                 .environmentObject(WebService())
                 .environmentObject(HTMLParse())) {
-                Image("noAlbumImage")
+                Image("darkSideOfTheMoon")
                     .resizable()
                     .cornerRadius(5)
                     .brightness(-0.1)
