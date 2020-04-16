@@ -15,6 +15,24 @@ struct MainHorizontalScrollView: View {
     @State var mostReadTracksFetched: Bool = false
     @State var albumImagesFetched: Bool = false
     
+    func getFavoriteTracks() {
+        do {
+            let defaults = UserDefaults.standard
+            var storedTracks: [FavoriteTrack]
+            if let storedObject = defaults.object(forKey: "favoriteTracks") as? Data {
+                storedTracks = try PropertyListDecoder().decode([FavoriteTrack].self, from: storedObject)
+            } else {
+                storedTracks = []
+            }
+            
+            DispatchQueue.main.async {
+                self.favoritesData.favoriteTracks = storedTracks
+            }
+        } catch {
+            print("Could not get favorite tracks from UserDefaults")
+        }
+    }
+    
     func fetchAlbumImagesRequest(index: Int, trackInfo: TrackList, group: DispatchGroup) {
         group.enter()
         self.mostReadTracksData.fetchAlbumImages(artist: trackInfo.track?.artistName ?? "", album: trackInfo.track?.albumName ?? "", completion: { (result) -> (Void) in
@@ -44,8 +62,10 @@ struct MainHorizontalScrollView: View {
         })
     }
     
-    var horizontalScrollCollectionCell: some View {
-        ForEach(isFavoritesView ? self.favoritesData.favoriteTracks : self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
+    // - MARK: I had to duplicate the code for the horizontalScrollCollectionView for now, will refactor when I have time
+    
+    var mostReadHorizontalScrollCollectionCell: some View {
+        ForEach(self.mostReadTracksData.tracksAndAlbums, id: \.self) { trackAndAlbum in
             NavigationLink(destination: LyricsView(trackInfo: trackAndAlbum)
                 .environmentObject(WebService())
                 .environmentObject(HTMLParse())) {
@@ -86,10 +106,60 @@ struct MainHorizontalScrollView: View {
         }
     }
     
-    var horizontalScrollCollectionView: some View {
+    var favoritesHorizontalScrollCollectionCell: some View {
+        ForEach(self.favoritesData.favoriteTracks, id: \.self) { favoriteTrack in
+            NavigationLink(destination: LyricsView(trackInfo: TrackAndAlbum(track: Track(trackID: 0, trackName: favoriteTrack.trackName, albumName: "", artistName: favoriteTrack.artistName), album: Image("noAlbumImage")))
+                .environmentObject(WebService())
+                .environmentObject(HTMLParse())) {
+                Image("noAlbumImage")
+                    .resizable()
+                    .cornerRadius(5)
+                    .brightness(-0.1)
+                    .frame(width: self.isFavoritesView ? 144 : 89, height: self.isFavoritesView ? 144 : 89)
+                    .aspectRatio(contentMode: .fit)
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.clear)
+                            .innerShadow(color: Color.black.opacity(0.8), radius: 1)
+                    )
+                        
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color(red: 255/255, green: 55/255, blue: 95/255), lineWidth: 1)
+                    )
+                    
+                    .overlay(Text(favoriteTrack.trackName ?? "")
+                        .font(.system(size: 12))
+                        .foregroundColor(Color.white)
+                        .lineLimit(1)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                        .padding(8)
+                    )
+                     
+                    // For moving text (not functional)
+    //                .overlay(MarqueeText(text: self.artistNames[index] + " - " + self.songNames[index])
+    //                .font(.system(size: 12))
+    //                     .padding(4))
+                    
+                    .padding(7.5)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+    }
+    
+    var mostReadHorizontalScrollCollectionView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
              HStack {
-                horizontalScrollCollectionCell
+                mostReadHorizontalScrollCollectionCell
+             }
+        }
+    }
+    
+    var favoritesHorizontalScrollCollectionView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+             HStack {
+                favoritesHorizontalScrollCollectionCell
              }
         }
     }
@@ -101,14 +171,20 @@ struct MainHorizontalScrollView: View {
                 .bold()
                 .foregroundColor(Color(red: 255/255, green: 55/255, blue: 95/255))
             
-            if(self.mostReadTracksFetched || self.isFavoritesView) {
-                horizontalScrollCollectionView
+            if(self.isFavoritesView) {
+                favoritesHorizontalScrollCollectionView
             } else {
-                horizontalScrollCollectionView.hidden()
+                if(self.mostReadTracksFetched) {
+                    mostReadHorizontalScrollCollectionView
+                } else {
+                    mostReadHorizontalScrollCollectionView.hidden()
+                }
             }
                 
         }
         .onAppear() {
+            self.getFavoriteTracks()
+            
             if(!self.isFavoritesView && !self.mostReadTracksFetched && !self.albumImagesFetched) {
                 self.mostReadTracksData.fetchMostReadLyrics(completion: { (result) -> (Void) in
                     switch(result) {

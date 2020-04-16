@@ -47,7 +47,7 @@ struct LyricsView: View {
                         UserDefaults.standard.set(try PropertyListEncoder().encode(storedTracks), forKey: "favoriteTracks")
                         
                     } catch {
-                        print("Failed saving favorite track")
+                        print("Failed saving favorite track to UserDefaults")
                     }
                 }) {
                     Image("heartIcon")
