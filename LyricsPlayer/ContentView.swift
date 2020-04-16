@@ -41,9 +41,18 @@ struct ContentView: View {
                 }
                     .edgesIgnoringSafeArea(.all)
             
-                PlayerBarView()
+                ZStack {
+                    Rectangle()
+                        .fill(Color(red: 28/255, green: 28/255, blue: 30/255))
+                        .offset(x: 0, y: -27)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
+                        
+                    
+                    PlayerBarView()
+                        .background(Color(red: 28/255, green: 28/255, blue: 30/255))
+                }
             }
-                .background(Color(red: 28/255, green: 28/255, blue: 30/255))
+//                .background(Color(red: 28/255, green: 28/255, blue: 30/255))
 
         }
         .navigationViewStyle(StackNavigationViewStyle())

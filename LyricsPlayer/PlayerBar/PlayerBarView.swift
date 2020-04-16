@@ -33,7 +33,9 @@ struct PlayerBarView: View {
             
             songVolumeSlider
         }
-        .frame(width: UIScreen.main.bounds.width * 0.88, height: 90, alignment: .top)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90, alignment: .top)
+        //.padding(0)
+        //.frame(height: 90)
         .padding(EdgeInsets(top: -15, leading: 0, bottom: 25, trailing: 0))
     }
     
