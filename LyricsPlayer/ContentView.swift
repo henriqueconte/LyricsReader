@@ -45,8 +45,6 @@ struct ContentView: View {
                 PlayerBarView()
             }
                 .background(Color(red: 28/255, green: 28/255, blue: 30/255))
-            
-
 
         }
         .navigationViewStyle(StackNavigationViewStyle())
