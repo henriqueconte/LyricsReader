@@ -14,7 +14,7 @@ struct ContentView: View {
             
             VStack(spacing: 27) {
                 ZStack {
-                    Image("u2Background")
+                    Image("kanyeWestBackground")
                         .resizable()
                     
                     VStack {
@@ -23,7 +23,6 @@ struct ContentView: View {
                         
                         SearchBarView()
                             .environmentObject(WebService())
-                        
                         Spacer()
                             .frame(height: UIScreen.main.bounds.height * 0.15)
                         
