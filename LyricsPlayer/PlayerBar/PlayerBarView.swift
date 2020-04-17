@@ -10,6 +10,12 @@ import SwiftUI
 
 struct PlayerBarView: View {
     
+    var artistName: String
+    var trackName: String
+    var songLyrics: String
+    @State var favoritedTracks: [FavoriteTrack] = []
+    @State var favoritedTrackIndex: Int = 0
+    @State var isCurrentSongFavorited: Bool = false
     @State var songTime: Double = 0.0
     @State var songVolume: Double = 0.8
     
@@ -34,11 +40,27 @@ struct PlayerBarView: View {
             songVolumeSlider
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 90, alignment: .top)
-        //.padding(0)
-        //.frame(height: 90)
         .padding(EdgeInsets(top: -15, leading: 0, bottom: 25, trailing: 0))
+        .onAppear() {
+            do {
+                let defaults = UserDefaults.standard
+                if let storedObject = defaults.object(forKey: "favoriteTracks") as? Data {
+                    self.favoritedTracks = try PropertyListDecoder().decode([FavoriteTrack].self, from: storedObject)
+                }
+                
+                for (index, favoritedTrack) in self.favoritedTracks.enumerated() {
+                    if(favoritedTrack.artistName == self.artistName && favoritedTrack.trackName == self.trackName) {
+                        DispatchQueue.main.async {
+                            self.isCurrentSongFavorited = true
+                        }
+                        self.favoritedTrackIndex = index
+                    }
+                }
+            } catch {
+                print("Failed getting favorite tracks from UserDefaults")
+            }
+        }
     }
-    
     
     var artistView: some View {
         HStack(spacing: 20) {
@@ -51,15 +73,33 @@ struct PlayerBarView: View {
             
             VStack(alignment: .leading, spacing: 5, content: {
                 
-                Text("Like a Stone")
+                Text(trackName)
                     .font(.system(size: 21, weight: .medium, design: .default))
                     .foregroundColor(Color(red: 229/255, green: 229/255, blue: 234/255))
                 
-                Text("Audioslave")
+                Text(artistName)
                     .font(.system(size: 13, weight: .light, design: .default))
                     .foregroundColor(Color(red: 209/255, green: 209/255, blue: 214/255))
                 
-                Image("heartIcon")
+                Button(action: {
+                    do {
+                        if(!self.isCurrentSongFavorited) {
+                            let newFavoriteTrack: FavoriteTrack = FavoriteTrack(artistName: self.artistName, trackName: self.trackName, lyrics: self.songLyrics)
+                            self.favoritedTracks.append(newFavoriteTrack)
+                            self.favoritedTrackIndex = self.favoritedTracks.count - 1
+                        } else {
+                            self.favoritedTracks.remove(at: self.favoritedTrackIndex)
+                        }
+                        
+                        self.isCurrentSongFavorited = !self.isCurrentSongFavorited
+                        UserDefaults.standard.set(try PropertyListEncoder().encode(self.favoritedTracks), forKey: "favoriteTracks")
+                    } catch {
+                        print("Failed saving favorite tracks to UserDefaults")
+                    }
+                }) {
+                    Image(isCurrentSongFavorited ? "heartIcon2" : "heartIcon")
+                        .renderingMode(.original)
+                }
             })
             .frame(width: UIScreen.main.bounds.width * 0.12)
             
@@ -124,6 +164,6 @@ struct PlayerBarView: View {
 
 struct PlayerBarView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerBarView()
+        PlayerBarView(artistName: "Audioslave", trackName: "Like a Stone", songLyrics: "Lyrics")
     }
 }

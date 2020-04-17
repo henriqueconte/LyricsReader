@@ -48,7 +48,7 @@ struct ContentView: View {
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 120)
                         
                     
-                    PlayerBarView()
+                    PlayerBarView(artistName: "Audioslave", trackName: "Like a Stone", songLyrics: "Lyrics")
                         .background(Color(red: 28/255, green: 28/255, blue: 30/255))
                 }
             }

@@ -24,35 +24,13 @@ struct LyricsView: View {
     
     
     var body: some View {
-        VStack() {
-            HStack {
+        VStack {
+            Group {
                 if self.isBigTextActive {
                     BigTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
                 }
                 else {
                     SmallTextView(artistName: artistName, trackName: trackName, songLyrics: $songLyrics)
-                }
-                
-                // MARK:- Favoritar aqui Felipe!!!
-                Button(action: {
-                    do {
-                        let defaults = UserDefaults.standard
-                        var storedTracks: [FavoriteTrack]
-                        if let storedObject = defaults.object(forKey: "favoriteTracks") as? Data {
-                            storedTracks = try PropertyListDecoder().decode([FavoriteTrack].self, from: storedObject)
-                        } else {
-                            storedTracks = []
-                        }
-                        
-                        let newFavoriteTrack: FavoriteTrack = FavoriteTrack(artistName: self.artistName, trackName: self.trackName, lyrics: self.songLyrics)
-                        storedTracks.append(newFavoriteTrack)
-                        UserDefaults.standard.set(try PropertyListEncoder().encode(storedTracks), forKey: "favoriteTracks")
-                        
-                    } catch {
-                        print("Failed saving favorite track to UserDefaults")
-                    }
-                }) {
-                    Image("heartIcon")
                 }
             }
             
@@ -62,7 +40,8 @@ struct LyricsView: View {
             switchButtons
                 .padding(EdgeInsets(top: switchButtonsTopInset, leading: 0, bottom: 0, trailing: switchButtonsTrailingInset))
           
-            PlayerBarView()
+            PlayerBarView(artistName: artistName, trackName: trackName, songLyrics: songLyrics)
+                .padding(.top, 15)
         }
         .background(Color(ColorsConstants.darkGray))
         .edgesIgnoringSafeArea(.all)
